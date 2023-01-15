@@ -6,6 +6,11 @@ const HomeSchema = new mongoose_1.Schema({
     name: String,
     price: Number,
     image: String,
+    description: String,
+    category: {
+        type: String,
+        ref: 'Category'
+    }
 });
 const Home = (0, mongoose_1.model)('Home', HomeSchema);
 exports.Home = Home;

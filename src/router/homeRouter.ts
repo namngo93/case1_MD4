@@ -6,5 +6,7 @@ import multer from 'multer'
 export const homeRouter = Router();
 homeRouter.get('/create', homeController.showFormCreate);
 homeRouter.post('/create' , homeController.create);
-// productRouter.get('/edit/:id' , homeController.showFormEdit);
-// productRouter.post('/edit/:id' , homeController.update );
+homeRouter.get('/edit/:id' , homeController.showFormEdit);
+homeRouter.post('/edit/:id' , homeController.update );
+homeRouter.get('/delete/:id' , homeController.showFormDelete);
+homeRouter.get('/deleteHome/:id' , homeController.delete);

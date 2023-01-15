@@ -7,7 +7,7 @@ import session from "express-session";
 
 
 const app = express();
-mongoose.connect('mongodb://127.0.0.1:27017/demo_dbC09').then(()=>{
+mongoose.connect('mongodb://127.0.0.1:27017/case1_MD4').then(()=>{
     console.log('Connect db success')
 })
 mongoose.set('strictQuery', true);
@@ -27,5 +27,5 @@ app.use(session({
 app.use('', router);
 
 app.listen(3000, () => {
-    console.log('Server is running at http://localhost:3000/home')
+    console.log('Server is running at http://localhost:3000/users/login')
 })

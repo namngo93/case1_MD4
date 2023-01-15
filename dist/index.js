@@ -10,7 +10,7 @@ const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const express_session_1 = __importDefault(require("express-session"));
 const app = (0, express_1.default)();
-mongoose_1.default.connect('mongodb://127.0.0.1:27017/demo_dbC09').then(() => {
+mongoose_1.default.connect('mongodb://127.0.0.1:27017/case1_MD4').then(() => {
     console.log('Connect db success');
 });
 mongoose_1.default.set('strictQuery', true);
@@ -30,6 +30,6 @@ app.use((0, express_session_1.default)({
 }));
 app.use('', router_1.router);
 app.listen(3000, () => {
-    console.log('Server is running at http://localhost:3000/home');
+    console.log('Server is running at http://localhost:3000/users/login');
 });
 //# sourceMappingURL=index.js.map

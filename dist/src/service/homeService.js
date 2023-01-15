@@ -4,7 +4,7 @@ const home_1 = require("../model/home");
 class HomeService {
     constructor() {
         this.getAll = async () => {
-            let homes = await home_1.Home.find();
+            let homes = await home_1.Home.find().populate('category');
             return homes;
         };
         this.save = async (home) => {
@@ -26,6 +26,22 @@ class HomeService {
             else {
                 return home;
             }
+        };
+        this.delete = async (id) => {
+            let home = home_1.Home.findOne({ _id: id });
+            if (!home) {
+                return null;
+            }
+            else {
+                return home.deleteOne({ _id: id });
+            }
+        };
+        this.findByName = async (search) => {
+            let homes = await home_1.Home.find({ name: { $regex: `(.*)${search.search}(.*)` } });
+            if (!homes) {
+                return null;
+            }
+            return homes;
         };
     }
 }

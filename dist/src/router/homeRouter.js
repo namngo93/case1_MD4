@@ -9,4 +9,8 @@ const HomeController_1 = __importDefault(require("../controller/HomeController")
 exports.homeRouter = (0, express_1.Router)();
 exports.homeRouter.get('/create', HomeController_1.default.showFormCreate);
 exports.homeRouter.post('/create', HomeController_1.default.create);
+exports.homeRouter.get('/edit/:id', HomeController_1.default.showFormEdit);
+exports.homeRouter.post('/edit/:id', HomeController_1.default.update);
+exports.homeRouter.get('/delete/:id', HomeController_1.default.showFormDelete);
+exports.homeRouter.get('/deleteHome/:id', HomeController_1.default.delete);
 //# sourceMappingURL=homeRouter.js.map

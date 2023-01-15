@@ -5,7 +5,7 @@ class HomeService {
     }
 
     getAll = async () => {
-        let homes = await Home.find();
+        let homes = await Home.find().populate('category');
         return homes;
     }
 
@@ -30,6 +30,24 @@ class HomeService {
             return home;
         }
     }
+
+    private delete= async (id) => {
+        let home = Home.findOne({_id: id});  //findOne là tìm ra một thằng
+        if (!home){
+            return null;
+        }else {
+          return home.deleteOne({_id: id});
+        }
+    }
+
+    findByName = async (search)=>{
+        let homes = await Home.find({name: {$regex:`(.*)${search.search}(.*)`} })
+        if (!homes){
+            return null;
+        }
+        return homes;
+    }
+
 }
 
 export default new HomeService();

@@ -9,7 +9,7 @@
 <body>
 <div>
     <div >
-        <h1 style="text-align: center; margin-top: 20px; background-color: rgba(100,149,237,0.6)"> Hệ Thống Thuê Nhà</h1>
+        <h1 style="text-align: center; margin-top: 20px; background-color: rgba(89,133,89,0.51)"> Hệ Thống Thuê Nhà</h1>
     </div>
     <div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,6 +20,9 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                    </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -32,7 +35,7 @@
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </li>
-                    <li class="nav-item" style="margin-left: 870px">
+                    <li class="nav-item" style="margin-left: 820px">
                         <a class="nav-link" href="/users/login">Logout</a>
                     </li>
                 </ul>
@@ -69,42 +72,37 @@
     </div>
 
 
+
     <div style="background-color: rgba(255,228,196,0.34)">
-        <h2 style="text-align: center; margin-top: 40px;">Thêm Mới</h2>
+        <h2 style="text-align: center; margin-top: 40px;"> Sửa lại thông tin</h2>
     </div>
 
     <div class="col-md-4 mb-5" style="margin: auto">
 
-        <form action="/homes/create" method="post" enctype="multipart/form-data">
+        <form action="/homes/edit/<%= home._id %>" method="post" enctype="multipart/form-data">
             <div class="control-group">
-                <input type="text" class="form-control" name="name" placeholder="Name"
+                <input type="text" class="form-control" name="name" placeholder="Name" value="<%= home.name %>"
                        required="required" data-validation-required-message="Please enter your name" />
                 <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
-                <input type="number" class="form-control" name="price" placeholder="Price"
+                <input type="number" class="form-control" name="price" placeholder="Price" value="<%= home.price %>"
                        required="required" data-validation-required-message="Please enter your name" />
                 <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
-                <input type="file" class="form-control" name="image" placeholder="Image"
+                <img src="<%= home.image %>" style="width: 475px;" alt="">
+                <input type="file" class="form-control" name="image" placeholder="Image" value="<%= home.image %>"
                        required="required" data-validation-required-message="Please enter your name" />
                 <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
-                <input type="text" class="form-control" name="description" placeholder="Description"
+                <input type="text" class="form-control" name="description" placeholder="Description" value="<%= home.description %>"
                        required="required" data-validation-required-message="Please enter your name" />
                 <p class="help-block text-danger"></p>
-            </div>
-            <div class="control-group">
-                <select name="category">
-                    <% categories.map(item => { %>
-                    <option value="<%= item._id %>"><%= item.name %></option>
-                    <% }) %>
-                </select>
             </div>
             <div>
-                <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton" style="margin-top: 30px">Save</button>
+                <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Save</button>
             </div>
         </form>
     </div>

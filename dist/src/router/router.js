@@ -7,7 +7,10 @@ exports.router = void 0;
 const express_1 = require("express");
 const HomeController_1 = __importDefault(require("../controller/HomeController"));
 const homeRouter_1 = require("./homeRouter");
+const userRouter_1 = require("./userRouter");
 exports.router = (0, express_1.Router)();
 exports.router.get('/home', HomeController_1.default.showHome);
+exports.router.post('/home', HomeController_1.default.search);
 exports.router.use('/homes', homeRouter_1.homeRouter);
+exports.router.use('/users', userRouter_1.userRouter);
 //# sourceMappingURL=router.js.map
