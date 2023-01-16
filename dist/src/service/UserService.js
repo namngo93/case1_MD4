@@ -17,4 +17,4 @@ class UserService {
     }
 }
 exports.default = new UserService();
-//# sourceMappingURL=UserService.js.map
+//# sourceMappingURL=userService.js.map

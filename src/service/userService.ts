@@ -17,5 +17,13 @@ class UserService {
         }
         return userCheck;
     }
+
+    // checkUsername = async (user) => {
+    //     let userCheck = await User.findOne({username: user.username})
+    //     if (!userCheck) {
+    //         return null;
+    //     }
+    //     return userCheck;
+    // }
 }
 export default new UserService();

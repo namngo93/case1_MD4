@@ -5,15 +5,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const homeService_1 = __importDefault(require("../service/homeService"));
 const categoryService_1 = __importDefault(require("../service/categoryService"));
+const userService_1 = __importDefault(require("../service/userService"));
 class HomeController {
     constructor() {
         this.showHome = async (req, res) => {
             let homes = await homeService_1.default.getAll();
             res.render('home', { homes: homes });
         };
+        this.showHomeUser = async (req, res) => {
+            let homes = await homeService_1.default.getAll();
+            let user = req.session.User;
+            res.render('homeUser', { homes: homes, user: user });
+        };
         this.search = async (req, res) => {
             let homes = await this.homeService.findByName(req.body);
             res.render('home', { homes: homes });
+        };
+        this.searchUser = async (req, res) => {
+            let homes = await this.homeService.findByName(req.body);
+            res.render('homeUser', { homes: homes });
         };
         this.showFormCreate = async (req, res) => {
             let categories = await categoryService_1.default.getAll();
@@ -60,6 +70,7 @@ class HomeController {
         };
         this.homeService = homeService_1.default;
         this.categoryService = categoryService_1.default;
+        this.userService = userService_1.default;
     }
 }
 exports.default = new HomeController();

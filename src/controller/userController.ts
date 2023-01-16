@@ -16,15 +16,18 @@ class HomeController {
 
     login = async (req: Request, res: Response) => {
         let user = await this.userService.checkUser(req.body);
-        if (user ) {
+        if (user.role === 'Admin' ) {
             // @ts-ignore
             req.session.User = user;
             res.redirect(301,'/home')
-        } else {
+        } else if(user.role === 'member'){
+            // @ts-ignore
+            req.session.User = user;
+            res.redirect(301,'/homeUser')
+        } else{
             res.redirect('/users/login')
         }
     }
-
 }
 
 export default new HomeController();
